@@ -119,10 +119,12 @@ public class MessageListener extends ListenerAdapter {
                     reply.append(matcher.group("before"))
                             .append("<").append(matcher.group("fullLink")).append("> [_](")
                             .append(matcher.group("fullLink").replace(domain, replacements.get(index) == null ? replacements.getLast() : replacements.get(index)))
+                            .append(domain == "x.com" ? "/en" : "") // manually tested it, all the x.com replacements have a working implementation of '/en' 
                             .append(")").append(matcher.group("after"));
                 } else {
                     reply.append("[_](")
                             .append(matcher.group("fullLink").replace(domain, replacements.get(index) == null ? replacements.getLast() : replacements.get(index)))
+                            .append(domain == "x.com" ? "/en" : "") // manually tested it, all the x.com replacements have a working implementation of '/en' 
                             .append(")");
                     // Spoiler Check, odd number of markers before & after link required
                     if (matcher.group("before").split("||").length % 2 == 0
